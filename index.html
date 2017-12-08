@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Charmen Books</title>
+    <script id="book-template" type="text/x-handlebars-template">
+        <article class="clearfix" data-author="{{author}}" >
+          <header>
+            <h1>{{title}}</h1>
+            <div class="byline">
+              By <address><a href="{{authorUrl}}">{{author}}</a></address>
+              {{isbn}}
+            </div>
+          </header>
+          <section class="description">{{{description}}}</section>
+          <a href="#" class="read-on">Read on &rarr;</a>
+        </article>
+      </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </nav>
+    <section id="books">
+    </section>
+    <section id="about">
+        <ul>
+            <li>This app is about books.</li>
+            <li>Look at these books. </li>
+        </ul>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="books.js"></script>
+</body>
+</html>
