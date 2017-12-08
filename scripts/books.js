@@ -1,8 +1,8 @@
 'use strict';
 var app = app || {};
 
-const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
-// const API_URL = 'http://localhost:3000/api/v1';
+// const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
+const API_URL = 'http://localhost:3000/api/v1';
 
 (function (module) {
     function Book (obj) {
@@ -13,6 +13,7 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
         this.image_url = obj.image_url;
         this.description = obj.description;
     }
+
     Book.all = [];
 
     Book.prototype.toHtml = function () {
@@ -29,16 +30,10 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
     Book.fetchAll = (callback) => {
         $.get(`${API_URL}/books`)
 
-            .then(results => {
-                Book.loadAll(results);
-                callback();
-            });
-    };
-
-    Book.initHome = () => {
-        // Book.fetchAll();
-        Book.all.forEach(a => $('#books').append(a.toHtml()));
+            .then(Book.loadAll)
+            .then(callback)
+            .fail(console.error);
     };
 
     module.Book = Book;
-}) (app);
+})(app);

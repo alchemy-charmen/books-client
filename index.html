@@ -8,7 +8,7 @@
     <script id="book-template" type="text/x-handlebars-template">
         <article class="clearfix" data-book="{{title}}" >
           <header>
-            <h1><a href="/books/{{id}}"{{title}}</h1>
+            <h1><a href="/books/{{id}}">{{title}}</a></h1>
             <img src="{{image_url}}" alt="image of book">
             <div class="byline">
               By <address><a href="">{{author}}</a></address>
@@ -23,19 +23,21 @@
 <body>
     <nav>
         <ul>
-            <li id="home"><a href="/">Home</a>></li>
-            <li id="new-nav"><a href="/new">Add a Book</a>></li>
+            <li id="home"><a href="/books">Home</a></li>
+            <li id="new-nav"><a href="/new">Add a Book</a></li>
             <li id="about-nav"><a href="/about">About the App</a></li>
         </ul>
     </nav>
-    <section id="books">
-    </section>
-    <section id="about">
-        <ul>
-            <li>This app is about books.</li>
-            <li>Look at these books. </li>
-        </ul>
-    </section>
+    <main>
+        <section id="books">
+        </section>
+        <section id="about">
+            <ul>
+                <li>This app is about books.</li>
+                <li>Look at these books. </li>
+            </ul>
+        </section>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
@@ -43,7 +45,7 @@
     <script src="scripts/bookview.js"></script>
     <script src="scripts/routes.js"></script>
     <script>
-    app.Book.fetchAll(app.Book.initHome);
+    // app.Book.fetchAll(app.Book.initHome);
     // app.Book.initHome();
     </script>
 </body>
