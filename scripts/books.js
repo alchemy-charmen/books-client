@@ -35,5 +35,15 @@ const API_URL = 'http://localhost:3000/api/v1';
             .fail(console.error);
     };
 
+    Book.fetchOne = (ctx, cb) => {
+        $.get(`${API_URL}/books/${ctx.params.id}`)
+            .then(data => {
+                ctx.book = new Book(data[0]);
+                cb();
+            })
+            .fail(console.error);
+    };
+
+
     module.Book = Book;
 })(app);
