@@ -13,6 +13,7 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
         this.image_url = obj.image_url;
         this.description = obj.description;
     }
+
     Book.all = [];
 
     Book.prototype.toHtml = function () {
@@ -29,16 +30,25 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
     Book.fetchAll = (callback) => {
         $.get(`${API_URL}/books`)
 
-            .then(results => {
-                Book.loadAll(results);
-                callback();
-            });
+            .then(Book.loadAll)
+            .then(callback)
+            .fail(console.error);
     };
 
-    Book.initHome = () => {
-        // Book.fetchAll();
-        Book.all.forEach(a => $('#books').append(a.toHtml()));
+    Book.fetchOne = (ctx, cb) => {
+        $.get(`${API_URL}/books/${ctx.params.id}`)
+            .then(data => {
+                ctx.book = new Book(data[0]);
+                cb();
+            })
+            .fail(console.error);
+    };
+
+    Book.prototype.insertRecord = function(callback) {
+        $.post(`${API_URL}/books`, {author: this.author, title: this.title, description: this.description, isbn: this.isbn, image_url: this.image_url})
+            .then(console.log)
+            .then(callback);
     };
 
     module.Book = Book;
-}) (app);
+})(app);

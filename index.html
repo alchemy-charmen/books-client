@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Charmen Books</title>
     <script id="book-template" type="text/x-handlebars-template">
-        <article class="clearfix" data-author="{{author}}" >
+        <article class="clearfix" data-book="{{title}}" >
           <header>
-            <h1>{{title}}</h1>
+            <h1><a href="/books/{{id}}">{{title}}</a></h1>
+            <img src="{{image_url}}" alt="image of book cover for {{title}}">
             <div class="byline">
               By <address><a href="">{{author}}</a></address>
               {{isbn}}
@@ -22,24 +23,45 @@
 <body>
     <nav>
         <ul>
-            <li></li>
-            <li></li>
+            <li id="home"><a href="/">Home</a></li>
+            <li id="new-nav"><a href="/books/new">Add a Book</a></li>
+            <li id="about-nav"><a href="/books/about">About the App</a></li>
         </ul>
     </nav>
-    <section id="books">
-    </section>
-    <section id="about">
-        <ul>
-            <li>This app is about books.</li>
-            <li>Look at these books. </li>
-        </ul>
-    </section>
+    <main>
+        <section id="books">
+        </section>
+        <section id="about">
+            <ul>
+                <li>This app is about books.</li>
+                <li>Look at these books. </li>
+            </ul>
+        </section>
+        <section id="new">
+            <h1>New Book</h1>
+            <form action="#" id="new-form">
+              <label>
+                <input type="text" id="book-title" placeholder="Book title" required>
+              </label>
+              <label>
+                  <input type="text" id="book-author" placeholder="Author Name" required>
+                </label>
+                <textarea id="book-description" rows="8" cols="40" required></textarea>
+              <label>
+                <input type="text" id="book-cover-url" placeholder="Book Cover URL" required>
+              </label>
+              <label>
+                  <input type="text" id="isbn" placeholder="ISBN">
+              </label>
+              <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="books.js"></script>
-    <script>
-    app.Book.fetchAll(app.Book.initHome);
-    // app.Book.initHome();
-    </script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+    <script src="scripts/books.js"></script>
+    <script src="scripts/bookview.js"></script>
+    <script src="scripts/routes.js"></script>
 </body>
 </html>
