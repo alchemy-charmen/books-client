@@ -44,6 +44,5 @@ const API_URL = 'http://localhost:3000/api/v1';
             .fail(console.error);
     };
 
-
     module.Book = Book;
 })(app);

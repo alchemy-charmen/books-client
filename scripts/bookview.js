@@ -18,10 +18,10 @@ var app = app || {};
         $('#books').append(ctx.book.toHtml());
     };
 
-    bookView.initNewBook = (ctx) => {
+    bookView.initNewBook = () => {
         $('main section').hide();
         $('#new').show();
-
+        console.log('I heard you');
     };
 
     module.bookView = bookView;
