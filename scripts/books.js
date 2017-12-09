@@ -1,8 +1,8 @@
 'use strict';
 var app = app || {};
 
-// const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
-const API_URL = 'http://localhost:3000/api/v1';
+const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
+// const API_URL = 'http://localhost:3000/api/v1';
 
 (function (module) {
     function Book (obj) {
@@ -42,6 +42,12 @@ const API_URL = 'http://localhost:3000/api/v1';
                 cb();
             })
             .fail(console.error);
+    };
+
+    Book.prototype.insertRecord = function(callback) {
+        $.post(`${API_URL}/books`, {author: this.author, title: this.title, description: this.description, isbn: this.isbn, image_url: this.image_url})
+            .then(console.log)
+            .then(callback);
     };
 
     module.Book = Book;
