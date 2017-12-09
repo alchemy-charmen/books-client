@@ -18,5 +18,11 @@ var app = app || {};
         $('#books').append(ctx.book.toHtml());
     };
 
+    bookView.initNewBook = (ctx) => {
+        $('main section').hide();
+        $('#new').show();
+
+    };
+
     module.bookView = bookView;
 })(app);

@@ -4,4 +4,6 @@ page('/', (ctx, next) => {
 
 page('/books/:id', app.Book.fetchOne, app.bookView.initDetailPage);
 
+page('/books/new', app.bookView.initNewBook);
+
 page.start();
