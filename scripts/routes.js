@@ -6,5 +6,5 @@ page('/books/new', app.bookView.initNewBook);
 
 page('/books/:id', app.Book.fetchOne, app.bookView.initDetailPage);
 
-
+page.base('/books-client');
 page.start();
