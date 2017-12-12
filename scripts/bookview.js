@@ -8,14 +8,15 @@ var app = app || {};
     bookView.initHome = () => {
         $('main section').hide();
         $('#books').empty().show();
-        $('button[data-method]').hide;
         app.Book.all.map(b => $('#books').append(b.toHtml()));
+        
+        $('button[data-method]').hide();
     };
 
     bookView.initDetailPage = (ctx) => {
         $('main section').hide();
         $('#books').empty().show();
-        $('button[data-method]').show;
+        $('button[data-method]').show();
         console.log(ctx.book);
         $('#books').append(ctx.book.toHtml());
         $('button[data-method="update"]').on('click', function () {
@@ -29,7 +30,7 @@ var app = app || {};
         $('#new-form').on('submit', bookView.submit);
     };
 
-    bookView.initUpdatePage = (ctx, cb) => {
+    bookView.initUpdatePage = (ctx) => {
         $('main-section').hide();
         $('#update-form').parent().show();
         const book = ctx.book;
@@ -47,6 +48,7 @@ var app = app || {};
                 image_url: $('#update-form input[name="cover-url"]').val(),
                 description: $('#update-form input[name="description"]').val(),
             };
+            app.Book.update(book.id, updatedData);
         });
     };
 

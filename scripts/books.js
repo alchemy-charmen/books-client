@@ -27,7 +27,7 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
         });
     };
 
-    Book.fetchAll = (callback) => {
+    Book.fetchAll = (ctx, callback) => {
         $.get(`${API_URL}/books`)
 
             .then(Book.loadAll)
