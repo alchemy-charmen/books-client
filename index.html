@@ -8,12 +8,13 @@
     <script id="book-template" type="text/x-handlebars-template">
         <article class="clearfix" data-book="{{title}}" >
           <header>
-            <h1><a href="/books/{{id}}">{{title}}</a></h1>
+            <h1><a href="/books-client/books/{{id}}">{{title}}</a></h1>
             <img src="{{image_url}}" alt="image of book cover for {{title}}">
             <div class="byline">
               By <address><a href="">{{author}}</a></address>
               {{isbn}}
             </div>
+            <button data-method="update">UPDATE</button>
           </header>
           <section class="description">{{{description}}}</section>
           <a href="#" class="read-on">Read on &rarr;</a>
@@ -23,9 +24,9 @@
 <body>
     <nav>
         <ul>
-            <li id="home"><a href="/">Home</a></li>
-            <li id="new-nav"><a href="/books/new">Add a Book</a></li>
-            <li id="about-nav"><a href="/books/about">About the App</a></li>
+            <li id="home"><a href="/books-client">Home</a></li>
+            <li id="new-nav"><a href="/books-client/books/new">Add a Book</a></li>
+            <li id="about-nav"><a href="/books-client/books/about">About the App</a></li>
         </ul>
     </nav>
     <main>
@@ -52,6 +53,25 @@
               </label>
               <label>
                   <input type="text" id="isbn" placeholder="ISBN">
+              </label>
+              <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section id="update">
+            <h1>Update Your Book Entry</h1>
+            <form action="#" id="update-form">
+              <label>
+                <input type="text" name="title" placeholder="Book title" required>
+              </label>
+              <label>
+                  <input type="text" name="author" placeholder="Author Name" required>
+                </label>
+                <textarea name="description" rows="8" cols="40" required></textarea>
+              <label>
+                <input type="text" name="cover-url" placeholder="Book Cover URL" required>
+              </label>
+              <label>
+                  <input type="text" name="isbn" placeholder="ISBN">
               </label>
               <button type="submit">Submit</button>
             </form>

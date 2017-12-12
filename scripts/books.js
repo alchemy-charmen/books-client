@@ -27,7 +27,7 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
         });
     };
 
-    Book.fetchAll = (callback) => {
+    Book.fetchAll = (ctx, callback) => {
         $.get(`${API_URL}/books`)
 
             .then(Book.loadAll)
@@ -40,6 +40,19 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
             .then(data => {
                 ctx.book = new Book(data[0]);
                 cb();
+            })
+            .fail(console.error);
+    };
+
+    Book.update = (id, data) => {
+        $.ajax({
+            url: `${API_URL}/books/${id}`,
+            method: 'PUT',
+            data: data
+        })
+            .then(data => {
+                console.log(data);
+                page(`/books/${id}`);
             })
             .fail(console.error);
     };
