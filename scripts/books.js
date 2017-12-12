@@ -44,6 +44,19 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
             .fail(console.error);
     };
 
+    Book.update = (id, data) => {
+        $.ajax({
+            url: `${API_URL}/api/v1/books/${id}`,
+            method: 'PUT',
+            data: data
+        })
+            .then(data => {
+                console.log(data);
+                page(`/books/${id}`);
+            })
+            .fail(console.error);
+    };
+
     Book.prototype.insertRecord = function(callback) {
         $.post(`${API_URL}/books`, {author: this.author, title: this.title, description: this.description, isbn: this.isbn, image_url: this.image_url})
             .then(console.log)
