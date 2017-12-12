@@ -46,7 +46,7 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
 
     Book.update = (id, data) => {
         $.ajax({
-            url: `${API_URL}/api/v1/books/${id}`,
+            url: `${API_URL}/books/${id}`,
             method: 'PUT',
             data: data
         })

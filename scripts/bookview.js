@@ -38,7 +38,7 @@ var app = app || {};
         $('#update-form input[name="author"]').val(book.author);
         $('#update-form input[name="isbn"]').val(book.isbn);
         $('#update-form input[name="cover-url"]').val(book.image_url);
-        $('#update-form input[name="description"]').val(book.description);
+        $('#update-form textarea[name="description"]').val(book.description);
         $('#update-form').on('submit', function () {
             event.preventDefault();
             const updatedData = {
@@ -46,7 +46,7 @@ var app = app || {};
                 author: $('#update-form input[name="author"]').val(),
                 isbn: $('#update-form input[name="isbn"]').val(),
                 image_url: $('#update-form input[name="cover-url"]').val(),
-                description: $('#update-form input[name="description"]').val(),
+                description: $('#update-form textarea[name="description"]').val(),
             };
             app.Book.update(book.id, updatedData);
         });
