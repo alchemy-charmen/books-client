@@ -54,14 +54,14 @@ var app = app || {};
 
     bookView.submit = event => {
         event.preventDefault();
-        const book = new app.Book({
-            author: $('#book-author').val(),
-            title: $('#book-title').val(),
-            isbn: $('#isbn').val(),
-            image_url: $('#book-cover-url').val(),
-            description: $('#book-description').val(),
-        });
-        book.insertRecord();
+        const newBook = {
+            title: $('#new-form input[name="book-title"]').val(),
+            author: $('#new-form input[name="book-author"]').val(),
+            isbn: $('#new-form input[name="isbn"]').val(),
+            image_url: $('#new-form input[name="book-cover-url"]').val(),
+            description: $('#new-form textarea[name="book-description"]').val()
+        };
+        app.Book.insertRecord(newBook);
     };
     module.bookView = bookView;
 })(app);

@@ -57,13 +57,13 @@ const API_URL = 'http://localhost:3000/api/v1';
             .fail(console.error);
     };
 
-    Book.prototype.insertRecord = function(callback) {
+    Book.insertRecord = function(newBook) {
         $.post(`${API_URL}/books`, {
-            title: $('#new-form input[name="book-title"]').val(),
-            author: $('#new-form input[name="book-author"]').val(),
-            isbn: $('#new-form input[name="isbn"]').val(),
-            image_url: $('#new-form input[name="book-cover-url"]').val(),
-            description: $('#new-form textarea[name="book-description"]').val(),
+            author: newBook.author,
+            title: newBook.title,
+            isbn: newBook.isbn,
+            image_url: newBook.image_url,
+            description: newBook.description,
         });
     };
 
