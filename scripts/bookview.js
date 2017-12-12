@@ -9,7 +9,7 @@ var app = app || {};
         $('main section').hide();
         $('#books').empty().show();
         app.Book.all.map(b => $('#books').append(b.toHtml()));
-        
+
         $('button[data-method]').hide();
     };
 
