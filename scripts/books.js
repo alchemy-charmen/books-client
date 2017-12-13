@@ -47,7 +47,7 @@ const API_URL = 'http://localhost:3000/api/v1';
     Book.find = (ctx, cb) => {
         $.get(`${API_URL}/books/search?search=${ctx}`)
             .then(data => {
-                app.bookView.toHtml(data); // call loadAll
+                Book.loadAll(data); 
                 cb();
             });
     };

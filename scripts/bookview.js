@@ -33,18 +33,21 @@ var app = app || {};
     bookView.initSearchFormPage = () => {
         $('main section').hide();
         $('.search-view').show();
-        $('#search').on('submit',() => {
-            bookView.initSearchResultsPage 
-        })
-        
+        $('#search').on('submit', function (event) {
+            event.preventDefault();
+            const ctx = {'search': this.searchbox.value};
+            app.Book.find(ctx);
+            bookView.initSearchResultsPage;
+        });
+
     };
 
     bookView.initSearchResultsPage = () => {
         $('main section').hide();
         $('.search-results').show();
         $('.search-view').show();
-        
-    } 
+
+    };
 
     bookView.initUpdatePage = (ctx) => {
         $('main-section').hide();
