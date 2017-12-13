@@ -27,8 +27,10 @@
             <li id="home"><a href="/books-client">Home</a></li>
             <li id="new-nav"><a href="/books-client/books/new">Add a Book</a></li>
             <li id="about-nav"><a href="/books-client/books/about">About the App</a></li>
+            <li id="search-nav"><a href="/books-client/books/search">Find a Book</a></li>
         </ul>
     </nav>
+  
     <main>
         <section id="books">
         </section>
@@ -38,21 +40,31 @@
                 <li>Look at these books. </li>
             </ul>
         </section>
+        <section class="search-view">
+            <form id="search-form">          
+                <input type="text" name="searchbox" placeholder="Search by title">
+                <button type="submit" id="search">Search</button>
+            </form>  
+        </section>
+        <section class="search-results">
+            <ul id="result">
+            </ul>
+        </section>
         <section id="new">
             <h1>New Book</h1>
             <form action="#" id="new-form">
               <label>
-                <input type="text" id="book-title" placeholder="Book title" required>
+                <input type="text" name="book-title" placeholder="Book title" required>
               </label>
               <label>
-                  <input type="text" id="book-author" placeholder="Author Name" required>
+                  <input type="text" name="book-author" placeholder="Author Name" required>
                 </label>
-                <textarea id="book-description" rows="8" cols="40" required></textarea>
+                <textarea name="book-description" rows="8" cols="40" required></textarea>
               <label>
-                <input type="text" id="book-cover-url" placeholder="Book Cover URL" required>
+                <input type="text" name="book-cover-url" placeholder="Book Cover URL" required>
               </label>
               <label>
-                  <input type="text" id="isbn" placeholder="ISBN">
+                  <input type="text" name="isbn" placeholder="ISBN">
               </label>
               <button type="submit">Submit</button>
             </form>

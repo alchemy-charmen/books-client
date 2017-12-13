@@ -1,8 +1,8 @@
 'use strict';
 var app = app || {};
 
-const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
-// const API_URL = 'http://localhost:3000/api/v1';
+// const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
+const API_URL = 'http://localhost:3000/api/v1';
 
 (function (module) {
     function Book (obj) {
@@ -44,6 +44,14 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
             .fail(console.error);
     };
 
+    Book.find = (ctx, cb) => {
+        $.get(`${API_URL}/books/search?search=${ctx}`)
+            .then(data => {
+                Book.loadAll(data); 
+                cb();
+            });
+    };
+
     Book.update = (id, data) => {
         $.ajax({
             url: `${API_URL}/books/${id}`,
@@ -57,10 +65,14 @@ const API_URL = 'https://charmenbooks.herokuapp.com/api/v1';
             .fail(console.error);
     };
 
-    Book.prototype.insertRecord = function(callback) {
-        $.post(`${API_URL}/books`, {author: this.author, title: this.title, description: this.description, isbn: this.isbn, image_url: this.image_url})
-            .then(console.log)
-            .then(callback);
+    Book.insertRecord = function(newBook) {
+        $.post(`${API_URL}/books`, {
+            author: newBook.author,
+            title: newBook.title,
+            isbn: newBook.isbn,
+            image_url: newBook.image_url,
+            description: newBook.description,
+        });
     };
 
     module.Book = Book;
