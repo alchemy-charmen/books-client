@@ -44,6 +44,14 @@ const API_URL = 'http://localhost:3000/api/v1';
             .fail(console.error);
     };
 
+    Book.find = (ctx, cb) => {
+        $.get(`${API_URL}/books/search?search=${ctx}`)
+            .then(data => {
+                app.bookView.toHtml(data); // call loadAll
+                cb();
+            });
+    };
+
     Book.update = (id, data) => {
         $.ajax({
             url: `${API_URL}/books/${id}`,

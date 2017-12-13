@@ -30,6 +30,22 @@ var app = app || {};
         $('#new-form').on('submit', bookView.submit);
     };
 
+    bookView.initSearchFormPage = () => {
+        $('main section').hide();
+        $('.search-view').show();
+        $('#search').on('submit',() => {
+            bookView.initSearchResultsPage 
+        })
+        
+    };
+
+    bookView.initSearchResultsPage = () => {
+        $('main section').hide();
+        $('.search-results').show();
+        $('.search-view').show();
+        
+    } 
+
     bookView.initUpdatePage = (ctx) => {
         $('main-section').hide();
         $('#update-form').parent().show();
